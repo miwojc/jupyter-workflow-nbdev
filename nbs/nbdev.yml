@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "jupyter-workflow-nbdev"
+  site-url: "https://miwojc.github.io/jupyter-workflow-nbdev"
+  description: "Jupyter worfklow with nbdev"
+  repo-branch: main
+  repo-url: "https://github.com/miwojc/jupyter-workflow-nbdev"

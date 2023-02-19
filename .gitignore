@@ -1,5 +1,9 @@
+*.csv
+.virtual_documents
+.jupyter
 _docs/
 _proc/
+.pre-commit-config.yaml
 
 *.bak
 .gitattributes

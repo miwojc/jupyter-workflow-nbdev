@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "jupyter_workflow.html",
+    "href": "jupyter_workflow.html",
+    "title": "Jupyter Workflow",
+    "section": "",
+    "text": "source"
+  },
+  {
+    "objectID": "jupyter_workflow.html#test-get_fremont_data",
+    "href": "jupyter_workflow.html#test-get_fremont_data",
+    "title": "Jupyter Workflow",
+    "section": "Test get_fremont_data",
+    "text": "Test get_fremont_data\n\nimport numpy as np\n\n\ndata = get_fremont_data()\n\n\nassert all(data.columns == [\"Total\", \"East\", \"West\"])\nassert isinstance(data.index, pd.DatetimeIndex)\nassert len(np.unique(data.index.time)) == 24"
+  },
+  {
+    "objectID": "jupyter_workflow.html#data-analysis",
+    "href": "jupyter_workflow.html#data-analysis",
+    "title": "Jupyter Workflow",
+    "section": "Data Analysis",
+    "text": "Data Analysis\n\ndata.head()\n\n\n\n\n\n  \n    \n      \n      Total\n      East\n      West\n    \n    \n      Date\n      \n      \n      \n    \n  \n  \n    \n      2022-08-01 00:00:00\n      23.0\n      7.0\n      16.0\n    \n    \n      2022-08-01 01:00:00\n      12.0\n      5.0\n      7.0\n    \n    \n      2022-08-01 02:00:00\n      3.0\n      0.0\n      3.0\n    \n    \n      2022-08-01 03:00:00\n      5.0\n      2.0\n      3.0\n    \n    \n      2022-08-01 04:00:00\n      10.0\n      2.0\n      8.0\n    \n  \n\n\n\n\n\nimport matplotlib.pyplot as plt\n\n\nplt.style.use('seaborn')\n\n\ndata.resample('W').sum().plot();\n\n\n\n\n\nax = data.resample('D').sum().rolling(365).sum().plot();\nax.set_ylim(0, None);\n\n\n\n\n\ndata.groupby(data.index.time).mean().plot();\n\n\n\n\n\npivoted = data.pivot_table('Total', index=data.index.time, columns=data.index.date)\npivoted.iloc[:5, :5]\n\n\n\n\n\n  \n    \n      \n      2012-10-03\n      2012-10-04\n      2012-10-05\n      2012-10-06\n      2012-10-07\n    \n  \n  \n    \n      00:00:00\n      13.0\n      18.0\n      11.0\n      15.0\n      11.0\n    \n    \n      01:00:00\n      10.0\n      3.0\n      8.0\n      15.0\n      17.0\n    \n    \n      02:00:00\n      2.0\n      9.0\n      7.0\n      9.0\n      3.0\n    \n    \n      03:00:00\n      5.0\n      3.0\n      4.0\n      3.0\n      6.0\n    \n    \n      04:00:00\n      7.0\n      8.0\n      9.0\n      5.0\n      3.0\n    \n  \n\n\n\n\n\npivoted.plot(legend=False, alpha=0.01);"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "jupyter-workflow-nbdev",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation."
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "jupyter-workflow-nbdev",
+    "section": "Install",
+    "text": "Install\npip install jupyter_workflow_nbdev"
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "jupyter-workflow-nbdev",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2"
+  }
+]

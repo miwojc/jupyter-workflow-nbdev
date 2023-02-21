@@ -4,21 +4,27 @@
 __all__ = ['FREMONT_URL', 'get_fremont_data']
 
 # %% ../nbs/jupyter_workflow.ipynb 2
-from urllib.request import urlretrieve
 from pathlib import Path
+from urllib.request import urlretrieve
+
 import pandas as pd
 
 # %% ../nbs/jupyter_workflow.ipynb 3
 FREMONT_URL = "https://data.seattle.gov/api/views/65db-xm6k/rows.csv?accessType=DOWNLOAD"
 
 # %% ../nbs/jupyter_workflow.ipynb 4
-def get_fremont_data(url:str=FREMONT_URL,  # Web location of the file
-                     filename:str='Fremont.csv', # Location of the file on drive
-                     force_download:bool=False # if True the redownload
-                    ) -> pd.DataFrame:
-    """Function return pandas DataFrame based on the url"""
+def get_fremont_data(url:str=FREMONT_URL,  # Web location of the data (optional)
+                     filename:str='Fremont.csv', # Location to save the data (optional)
+                     force_download:bool=False # if True, force redownload of data (optional)
+                    ) -> pd.DataFrame: # The fremont bridge data
     if force_download or not Path(filename).exists():
-        urlretrieve(url=FREMONT_URL, filename='Fremont.csv')
-    data = pd.read_csv(filename, index_col='Date', parse_dates=True)
+        urlretrieve(url, filename)
+    data = pd.read_csv(filename, index_col='Date')
+    
+    try:
+        data.index = pd.to_datetime(data.index, format='%m/%d/%Y %I:%M:%S %p')
+    except TypeError:
+        data.index = pd.to_datetime(data.index)
+        
     data.columns = ['Total', 'East', 'West']
     return data

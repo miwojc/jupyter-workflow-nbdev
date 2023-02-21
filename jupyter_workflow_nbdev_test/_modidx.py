@@ -5,5 +5,7 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://miwojc.github.io',
                 'git_url': 'https://github.com/miwojc/jupyter-workflow-nbdev-test',
                 'lib_path': 'jupyter_workflow_nbdev_test'},
-  'syms': { 'jupyter_workflow_nbdev_test.data': { 'jupyter_workflow_nbdev_test.data.get_fremont_data': ( 'jupyter_workflow.html#get_fremont_data',
+  'syms': { 'jupyter_workflow_nbdev_test.core': { 'jupyter_workflow_nbdev_test.core.foo': ( 'core.html#foo',
+                                                                                            'jupyter_workflow_nbdev_test/core.py')},
+            'jupyter_workflow_nbdev_test.data': { 'jupyter_workflow_nbdev_test.data.get_fremont_data': ( 'jupyter_workflow.html#get_fremont_data',
                                                                                                          'jupyter_workflow_nbdev_test/data.py')}}}
